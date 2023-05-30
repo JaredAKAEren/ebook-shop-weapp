@@ -1,11 +1,5 @@
 import request from "../utils/request"
 
-const postLogin = (data: loginData) => {
-  return request({
-    url: '/auth/login',
-    method: 'POST',
-    data,
-  })
+export const postLogin = (data: loginData) => {
+  return request.post('/auth/login', data)
 }
-
-export { postLogin }
