@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <h2>Home</h2>
+  <van-button type="info">按钮</van-button>
+</view>
