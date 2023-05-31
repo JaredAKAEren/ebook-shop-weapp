@@ -15,6 +15,8 @@ Page({
     this.loadData()
   },
   async loadData() {
+    if (this.data.loading) return
+
     this.setData({
       loading: true
     })
