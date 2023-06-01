@@ -1,0 +1,46 @@
+<!--pages/login/login.wxml-->
+<view class="page">
+  <view class="login-header shadow-sm">
+    <view class="login-header-title">
+      <text>eBook ID</text>
+    </view>
+    <view class="login-header-desc">
+      <view>
+        <text>管理你的</text>
+        <text class="strong">eBook</text>
+        <text>账户。</text>
+      </view>
+      <view class="flex">
+        <text>没有账户？</text>
+        <navigator url="/pages/register/register">
+          创建你的 eBook ID
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="login-form shadow-sm">
+    <van-cell-group>
+      <van-field
+        model:value="{{email}}"
+        error-message="{{emailErrMessage}}"
+        clearable
+        label="邮箱"
+        placeholder="请输入邮箱"
+        bind:blur="emailRule"
+        bind:input="emailRule"
+      ></van-field>
+      <van-field
+        model:value="{{password}}"
+        error-message="{{pwdErrMessage}}"
+        clearable
+        type="password"
+        label="密码"
+        placeholder="请输入密码"
+        border="{{false}}"
+        bind:blur="pwdRule"
+        bind:input="pwdRule"
+      ></van-field>
+    </van-cell-group>
+  </view>
+  <view class="login-button btn-gradient shadow-md" bind:tap="toLogin">登录</view>
+</view>

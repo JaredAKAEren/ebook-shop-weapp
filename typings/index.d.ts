@@ -8,14 +8,14 @@ interface IAppOption {
   userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
 }
 
-interface LoginData {
-  email: string,
-  password: string,
+type LoginData = {
+  email: string
+  password: string
 }
 
-interface HomeQuery {
-  page?: number,
-  sales?: 1,
-  recommend?: 1,
-  new?: 1,
+type HomeQuery = {
+  page?: number
+  sales?: 1
+  recommend?: 1
+  new?: 1
 }

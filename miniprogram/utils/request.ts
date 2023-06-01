@@ -22,7 +22,8 @@ const http = ({ url, method, data, header }: WechatMiniprogram.RequestOption): P
       method: method,
       data: data,
       header: {
-        ...header
+        ...header,
+        Authorization: 'Bearer ' + (wx.getStorageSync('token') || '')
       },
       timeout: 15000,
       success(res) {
@@ -34,22 +35,35 @@ const http = ({ url, method, data, header }: WechatMiniprogram.RequestOption): P
               msg = data?.message ?? '出错了，请重试'
               break
             case 401:
-              // TODO: 登录重定向
-              msg = '请登录'
+              // 登录验证未通过
+              if (url == '/auth/login') {
+                msg = '账号或密码错误'
+              } else {
+                msg = '请登录'
+                // token 过期或未登录的情况
+                wx.removeStorageSync('token')
+                wx.removeStorageSync('userinfo')
+                wx.redirectTo({
+                  url: '/pages/login/login'
+                })
+              }
               break
             case 404:
               msg = '资源不存在'
               break
             case 422:
-              msg = data?.error[Object.keys(data?.error)[0]][0] ?? '出错了，请重试'
+              msg = data?.errors[Object.keys(data?.errors)[0]][0] as string ?? '出错了，请重试'
+              msg = msg.replace(/\s+/g, '')
               break
           }
 
           wx.showToast({
             title: msg,
-            icon: 'error',
-            duration: 2000
+            icon: 'none',
+            duration: 3000
           })
+
+          reject(res)
         }
 
         resolve(res)

@@ -1,1 +1,71 @@
 /* pages/user/user.wxss */
+.page {
+  padding: 30rpx;
+}
+
+.user-card {
+  border-radius: 10rpx;
+}
+
+.login-content {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 16rpx 32rpx;
+}
+
+.login-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.login-info{
+  flex: 1;
+  padding: 32rpx;
+}
+
+.logout-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.25rem;
+  padding: 64rpx 0;
+}
+
+.logout-content>.separate {
+  margin: 0 16rpx;
+}
+
+
+.logout-button {
+  overflow: hidden;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  color: white;
+  text-align: center;
+  padding: 20rpx 0;
+  letter-spacing: .1em;
+  background-color: var(--red-500);
+}
+
+.logout-button:active{
+  opacity: .9;
+}
+
+.user-card-gradient {
+  background-image: linear-gradient(90deg,
+      hsl(161deg 94% 30%) 0%,
+      hsl(161deg 91% 32%) 20%,
+      hsl(161deg 90% 34%) 29%,
+      hsl(161deg 88% 36%) 36%,
+      hsl(160deg 86% 37%) 43%,
+      hsl(160deg 84% 39%) 50%,
+      hsl(160deg 80% 42%) 57%,
+      hsl(159deg 76% 44%) 64%,
+      hsl(159deg 72% 47%) 71%,
+      hsl(159deg 68% 49%) 80%,
+      hsl(158deg 64% 52%) 100%);
+}

@@ -14,7 +14,7 @@ Page({
   onLoad() {
     this.loadData()
   },
-  onPageScroll(e:WechatMiniprogram.Page.IPageScrollOption) {
+  onPageScroll(e: WechatMiniprogram.Page.IPageScrollOption) {
     if (e.scrollTop > 800) {
       this.setData({
         showBackTop: true
@@ -36,19 +36,19 @@ Page({
     })
 
     try {
-      const res: WechatMiniprogram.IAnyObject = await getHomeData({ page: this.data.currentPage + 1 })
+      const { data }: WechatMiniprogram.IAnyObject = await getHomeData({ page: this.data.currentPage + 1 })
       // 轮播图只加载一次
       if (this.data.currentPage == 0) {
         this.setData({
-          slides: res.data.slides ?? []
+          slides: data.slides ?? []
         })
       }
 
       // goods 不为空加载数据，为空显示没有数据了
-      if (res?.data?.goods?.data?.length !== 0) {
+      if (data?.goods?.data?.length !== 0) {
         this.setData({
-          slides: res.data.slides,
-          books: [...this.data.books, ...res.data.goods.data as []],
+          slides: data.slides,
+          books: [...this.data.books, ...data.goods.data as []],
           currentPage: this.data.currentPage += 1,
           loading: false
         })

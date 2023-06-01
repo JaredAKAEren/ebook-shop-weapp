@@ -1,0 +1,65 @@
+/* pages/login/login.wxss */
+.page {
+  padding: 30rpx;
+}
+
+.login-header {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.login-header-title {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.login-header-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 16rpx
+}
+
+.login-header-desc navigator {
+  color: var(--blue-600);
+}
+
+.login-form {
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+.login-button {
+  overflow: hidden;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  color: white;
+  text-align: center;
+  padding: 20rpx 0;
+  letter-spacing: .1em;
+}
+
+.login-button:active{
+  opacity: .9;
+}
+
+.btn-gradient {
+  background-image: linear-gradient(90deg,
+      hsl(158deg 64% 52%) 0%,
+      hsl(169deg 100% 41%) 27%,
+      hsl(174deg 100% 40%) 37%,
+      hsl(180deg 100% 39%) 45%,
+      hsl(186deg 100% 42%) 51%,
+      hsl(191deg 100% 45%) 56%,
+      hsl(195deg 100% 47%) 61%,
+      hsl(199deg 100% 49%) 66%,
+      hsl(202deg 100% 50%) 71%,
+      hsl(204deg 100% 50%) 77%,
+      hsl(206deg 100% 50%) 83%,
+      hsl(217deg 91% 60%) 100%);
+}

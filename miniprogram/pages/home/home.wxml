@@ -1,5 +1,5 @@
 <!-- home.wxml -->
-<view class="container">
+<view class="page">
   <swiper autoplay="{{false}}" interval="5000" indicator-dots circular>
     <swiper-item wx:for="{{slides}}" wx:key="id">
       <image class="swiper-image" src="{{item.img_url}}"></image>
