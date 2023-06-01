@@ -1,4 +1,4 @@
-<!-- index.wxml -->
+<!-- home.wxml -->
 <view class="container">
   <swiper autoplay="{{false}}" interval="5000" indicator-dots circular>
     <swiper-item wx:for="{{slides}}" wx:key="id">

@@ -1,4 +1,4 @@
-// index.ts
+// home.ts
 import { getHomeData } from '../../apis/home'
 
 Page({
@@ -14,7 +14,7 @@ Page({
   onLoad() {
     this.loadData()
   },
-  onPageScroll(e) {
+  onPageScroll(e:WechatMiniprogram.Page.IPageScrollOption) {
     if (e.scrollTop > 800) {
       this.setData({
         showBackTop: true
