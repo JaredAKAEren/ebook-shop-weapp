@@ -1,12 +1,5 @@
 <!-- index.wxml -->
-<scroll-view
-  class="container"
-  scroll-y
-  bindscroll="onScroll"
-  bindscrolltolower="toBottom"
-  model:scroll-top="{{top}}"
-  scroll-with-animation
->
+<view class="container">
   <swiper autoplay="{{false}}" interval="5000" indicator-dots circular>
     <swiper-item wx:for="{{slides}}" wx:key="id">
       <image class="swiper-image" src="{{item.img_url}}"></image>
@@ -33,4 +26,4 @@
   <view wx:if="{{showBackTop}}" class="back-top shadow-lg" bind:tap="backTop">
     <text class="back-top-icon"></text>
   </view>
-</scroll-view>
+</view>

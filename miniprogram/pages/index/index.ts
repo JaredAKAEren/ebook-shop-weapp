@@ -14,6 +14,20 @@ Page({
   onLoad() {
     this.loadData()
   },
+  onPageScroll(e) {
+    if (e.scrollTop > 800) {
+      this.setData({
+        showBackTop: true
+      })
+    } else {
+      this.setData({
+        showBackTop: false
+      })
+    }
+  },
+  onReachBottom() {
+    this.loadData()
+  },
   async loadData() {
     if (this.data.loading) return
 
@@ -50,22 +64,8 @@ Page({
     }
   },
   backTop() {
-    this.setData({
-      top: 0
+    wx.pageScrollTo({
+      scrollTop: 0
     })
-  },
-  onScroll(e: WechatMiniprogram.ScrollViewScroll) {
-    if (e.detail.scrollTop > 800) {
-      this.setData({
-        showBackTop: true
-      })
-    } else {
-      this.setData({
-        showBackTop: false
-      })
-    }
-  },
-  toBottom() {
-    this.loadData()
   }
 })
