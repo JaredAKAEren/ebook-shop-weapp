@@ -1,12 +1,13 @@
 // pages/user/user.ts
-import { postLogout } from '../../apis/accounts'
+import { postLogout, getUserInfo } from '../../apis/accounts'
 
 Page({
   data: {
-    isLogin: false
+    isLogin: false,
+    userInfo: {}
   },
   onLoad() {
-
+    this.fetchUser()
   },
   onReady() {
 
@@ -16,7 +17,7 @@ Page({
       isLogin: wx.getStorageSync('token') ? true : false
     })
   },
-  toLogout: async function handleOnLogiout() {
+  toLogout: async function handleOnLogout() {
     try {
       const res = await postLogout()
       if (res.statusCode === 204) {
@@ -25,6 +26,17 @@ Page({
           isLogin: false
         })
       }
+    } catch (error) {
+      // TODO
+    }
+  },
+  fetchUser: async function handleOnGetUserInfo() {
+    try {
+      const res = await getUserInfo()
+      if (res?.statusCode !== 200) return
+      this.setData({
+        userInfo: res.data
+      })
     } catch (error) {
       // TODO
     }

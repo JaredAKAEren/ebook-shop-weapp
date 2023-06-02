@@ -7,3 +7,7 @@ export const postLogin = (data: LoginData) => {
 export const postLogout = () => {
   return request.post('/auth/logout')
 }
+
+export const getUserInfo = () => {
+  return request.get('/admin/user')
+}

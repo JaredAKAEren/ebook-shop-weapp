@@ -2,10 +2,10 @@
 <view class="page">
   <view class="user-card user-card-gradient shadow-md">
     <view wx:if="{{isLogin}}" class="login-content">
-      <image class="login-avatar"></image>
+      <image class="login-avatar" src="{{userInfo.avatar_url}}"></image>
       <view class="login-info">
-        <view class="login-nickname">昵称: makima</view>
-        <view class="login-email">邮箱: makima@hk.com</view>
+        <view class="login-nickname">昵称: {{userInfo.name}}</view>
+        <view class="login-email">邮箱: {{userInfo.email}}</view>
       </view>
     </view>
     <view wx:else class="logout-content">
