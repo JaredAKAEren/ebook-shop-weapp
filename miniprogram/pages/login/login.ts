@@ -1,5 +1,7 @@
 // pages/login/login.ts
 import { postLogin } from '../../apis/accounts'
+import { redirect } from '../../utils/loginRedirect'
+import We = WechatMiniprogram
 
 Page({
   data: {
@@ -32,11 +34,9 @@ Page({
     }
 
     try {
-      const { data }: WechatMiniprogram.IAnyObject = await postLogin(loginData)
+      const { data }: We.IAnyObject = await postLogin(loginData)
       wx.setStorageSync('token', data.access_token)
-      wx.redirectTo({
-        url: '/pages/user/user'
-      })
+      redirect()
     } catch (error) {
       // TODO
     }

@@ -1,10 +1,16 @@
 // pages/user/user.ts
 import { postLogout, getUserInfo } from '../../apis/accounts'
+import We = WechatMiniprogram
 
-Page({
+interface UserData {
+  isLogin: boolean
+  userInfo: null | {}
+}
+
+Page<UserData, We.Page.CustomOption>({
   data: {
     isLogin: false,
-    userInfo: {}
+    userInfo: null
   },
   onLoad() {
     this.fetchUser()
@@ -13,6 +19,7 @@ Page({
 
   },
   onShow() {
+    this.fetchUser()
     this.setData({
       isLogin: wx.getStorageSync('token') ? true : false
     })
@@ -22,8 +29,10 @@ Page({
       const res = await postLogout()
       if (res.statusCode === 204) {
         wx.removeStorageSync('token')
+        wx.removeStorageSync('redirectUrl')
         this.setData({
-          isLogin: false
+          isLogin: false,
+          userInfo: null
         })
       }
     } catch (error) {
@@ -31,6 +40,8 @@ Page({
     }
   },
   fetchUser: async function handleOnGetUserInfo() {
+    if (!wx.getStorageSync('token') || this.data.userInfo !== null) return
+
     try {
       const res = await getUserInfo()
       if (res?.statusCode !== 200) return

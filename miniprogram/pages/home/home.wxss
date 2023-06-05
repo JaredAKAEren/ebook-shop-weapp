@@ -34,7 +34,7 @@
 }
 
 .book-title {
-  font-size: .875rem;
+  font-size: 0.875rem;
   margin-bottom: 20rpx;
 }
 
@@ -45,9 +45,9 @@
   align-items: center;
 }
 
-.book-info>text {
+.book-info > text {
   margin: 0 20rpx;
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .book-price {
@@ -55,8 +55,8 @@
   font-weight: 600;
 }
 
-.book-info>.book-sales {
-  font-size: .75rem;
+.book-info > .book-sales {
+  font-size: 0.75rem;
   color: var(--gray-400);
 }
 
@@ -71,7 +71,7 @@
 }
 
 .back-top {
-  background-color: var(--green-50);
+  background-color: var(--blue-50);
   position: fixed;
   right: 30rpx;
   bottom: 30rpx;
@@ -79,14 +79,15 @@
   width: 80rpx;
   text-align: center;
   border-radius: 100%;
-  border: 10rpx solid var(--green-100);
+  border: 10rpx solid var(--blue-100);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: border-color 0.2s;
 }
 
 .back-top:active {
-  border-color: var(--green-300);
+  border-color: var(--blue-300);
 }
 
 .back-top-icon {
@@ -95,5 +96,5 @@
   margin-top: -4rpx;
   border-left: 18rpx solid transparent;
   border-right: 18rpx solid transparent;
-  border-bottom: 18rpx solid var(--green-500);
+  border-bottom: 18rpx solid var(--blue-500);
 }

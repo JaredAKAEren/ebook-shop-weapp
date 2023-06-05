@@ -1,6 +1,7 @@
+import We = WechatMiniprogram
 const base = getApp<IAppOption>().globalData.baseUrl
 
-const http = ({ url, method, data, header }: WechatMiniprogram.RequestOption): Promise<WechatMiniprogram.RequestSuccessCallbackResult> => {
+const http = ({ url, method, data, header }: We.RequestOption): Promise<We.RequestSuccessCallbackResult> => {
   return new Promise(async (resolve, reject) => {
     // 微信小程序不支持 PATCH 方法，提供 data 添加字段来模拟
     if (method === undefined) {
@@ -27,12 +28,12 @@ const http = ({ url, method, data, header }: WechatMiniprogram.RequestOption): P
       },
       timeout: 15000,
       success(res) {
-        const data: WechatMiniprogram.IAnyObject = res.data as object
+        const data: We.IAnyObject = res.data as object
         if (res.statusCode >= 400) {
           let msg = '请求出错'
           switch (res.statusCode) {
             case 400:
-              msg = data?.message ?? '出错了，请重试'
+              msg = data?.message || '出错了，请重试'
               break
             case 401:
               // 登录验证未通过
@@ -42,7 +43,7 @@ const http = ({ url, method, data, header }: WechatMiniprogram.RequestOption): P
                 msg = '请登录'
                 // token 过期或未登录的情况
                 wx.removeStorageSync('token')
-                wx.removeStorageSync('userinfo')
+                wx.removeStorageSync('redirectUrl')
                 wx.redirectTo({
                   url: '/pages/login/login'
                 })

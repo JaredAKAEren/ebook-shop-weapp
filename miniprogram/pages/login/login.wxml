@@ -42,5 +42,7 @@
       ></van-field>
     </van-cell-group>
   </view>
-  <view class="login-button btn-gradient shadow-md" bind:tap="toLogin">登录</view>
+  <view class="login-button shadow-md" bind:tap="toLogin">
+    <text class="text">登录</text>
+  </view>
 </view>

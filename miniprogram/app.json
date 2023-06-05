@@ -13,7 +13,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#10b981",
+    "selectedColor": "#3b82f6",
     "list": [
       {
         "pagePath": "pages/home/home",

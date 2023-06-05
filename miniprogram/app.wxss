@@ -20,10 +20,42 @@ page {
   --green-400: #4ade80;
   --green-500: #22c55e;
   --green-600: #16a34a;
+  --blue-50: #f0f9ff;
+  --blue-100: #e0f2fe;
+  --blue-200: #bae6fd;
+  --blue-300: #7dd3fc;
   --blue-400: #60a5fa;
   --blue-500: #3b82f6;
   --blue-600: #2563eb;
   --blue-700: #1d4ed8;
+  --bg-blue-gradient: linear-gradient(
+    90deg,
+    hsl(217deg 91% 60%) 0%,
+    hsl(216deg 92% 61%) 10%,
+    hsl(215deg 93% 63%) 20%,
+    hsl(214deg 94% 64%) 30%,
+    hsl(214deg 94% 66%) 40%,
+    hsl(213deg 94% 68%) 50%,
+    hsl(213deg 94% 70%) 60%,
+    hsl(213deg 95% 72%) 70%,
+    hsl(212deg 95% 74%) 80%,
+    hsl(212deg 96% 76%) 90%,
+    hsl(212deg 96% 78%) 100%
+  );
+  --bg-blue-gradient-active: linear-gradient(
+    90deg,
+    hsl(213deg 94% 68%) 0%,
+    hsl(213deg 94% 70%) 10%,
+    hsl(213deg 95% 72%) 20%,
+    hsl(212deg 95% 74%) 30%,
+    hsl(212deg 96% 76%) 40%,
+    hsl(212deg 96% 78%) 50%,
+    hsl(212deg 96% 80%) 60%,
+    hsl(212deg 97% 82%) 70%,
+    hsl(213deg 97% 84%) 80%,
+    hsl(213deg 97% 86%) 90%,
+    hsl(213deg 97% 87%) 100%
+  );
 }
 
 .shadow-sm {
@@ -46,7 +78,7 @@ page {
   display: flex;
 }
 
-.strong{
+.strong {
   font-weight: bold;
   margin: 0 8rpx;
 }
@@ -54,4 +86,38 @@ page {
 .page {
   background-color: var(--gray-100);
   min-height: 100vh;
+}
+
+.blue-gradient {
+  background-image: linear-gradient(
+    90deg,
+    hsl(217deg 91% 60%) 0%,
+    hsl(216deg 92% 61%) 10%,
+    hsl(215deg 93% 63%) 20%,
+    hsl(214deg 94% 64%) 30%,
+    hsl(214deg 94% 66%) 40%,
+    hsl(213deg 94% 68%) 50%,
+    hsl(213deg 94% 70%) 60%,
+    hsl(213deg 95% 72%) 70%,
+    hsl(212deg 95% 74%) 80%,
+    hsl(212deg 96% 76%) 90%,
+    hsl(212deg 96% 78%) 100%
+  );
+}
+
+.blue-gradient-active {
+  background-image: linear-gradient(
+    90deg,
+    hsl(213deg 94% 68%) 0%,
+    hsl(213deg 94% 70%) 10%,
+    hsl(213deg 95% 72%) 20%,
+    hsl(212deg 95% 74%) 30%,
+    hsl(212deg 96% 76%) 40%,
+    hsl(212deg 96% 78%) 50%,
+    hsl(212deg 96% 80%) 60%,
+    hsl(212deg 97% 82%) 70%,
+    hsl(213deg 97% 84%) 80%,
+    hsl(213deg 97% 86%) 90%,
+    hsl(213deg 97% 87%) 100%
+  );
 }
