@@ -1,13 +1,12 @@
 // pages/user/user.ts
 import { postLogout, getUserInfo } from '../../apis/accounts'
-import We = WechatMiniprogram
 
 interface UserData {
   isLogin: boolean
   userInfo: null | {}
 }
 
-Page<UserData, We.Page.CustomOption>({
+Page<UserData, WXPageOption>({
   data: {
     isLogin: false,
     userInfo: null

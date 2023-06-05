@@ -1,6 +1,5 @@
 // home.ts
 import { getHomeData } from '../../apis/home'
-import We = WechatMiniprogram
 
 interface HomeData {
   slides: []
@@ -15,7 +14,7 @@ interface HomeData {
   outerIndex?: number
 }
 
-Page<HomeData, We.Page.CustomOption>({
+Page<HomeData, WXPageOption>({
   data: {
     slides: [],
     books: [],
@@ -30,7 +29,7 @@ Page<HomeData, We.Page.CustomOption>({
   onLoad() {
     this.loadData()
   },
-  onPageScroll(e: We.Page.IPageScrollOption) {
+  onPageScroll(e: WXPageScrollOption) {
     this.data.lastEvent = e.scrollTop
 
     if (!this.data.timer) {
@@ -62,7 +61,7 @@ Page<HomeData, We.Page.CustomOption>({
     })
 
     try {
-      const { data }: We.IAnyObject = await getHomeData({ page: this.data.currentPage + 1 })
+      const { data }: WXAnyObject = await getHomeData({ page: this.data.currentPage + 1 })
       // 轮播图只加载一次
       if (this.data.currentPage == 0) {
         this.setData({

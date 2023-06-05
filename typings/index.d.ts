@@ -8,6 +8,12 @@ interface IAppOption {
   userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
 }
 
+type WXPageOption = WechatMiniprogram.Page.CustomOption
+type WXPageScrollOption = WechatMiniprogram.Page.IPageScrollOption
+type WXAnyObject = WechatMiniprogram.IAnyObject
+type WXRequestOption = WechatMiniprogram.RequestOption
+type WXRequestSuccess = WechatMiniprogram.RequestSuccessCallbackResult
+
 type LoginData = {
   email: string
   password: string

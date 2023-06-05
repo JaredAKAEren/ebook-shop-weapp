@@ -1,7 +1,7 @@
-import We = WechatMiniprogram
+// import We = WechatMiniprogram
 const base = getApp<IAppOption>().globalData.baseUrl
 
-const http = ({ url, method, data, header }: We.RequestOption): Promise<We.RequestSuccessCallbackResult> => {
+const http = ({ url, method, data, header }: WXRequestOption): Promise<WXRequestSuccess> => {
   return new Promise(async (resolve, reject) => {
     // 微信小程序不支持 PATCH 方法，提供 data 添加字段来模拟
     if (method === undefined) {
@@ -28,7 +28,7 @@ const http = ({ url, method, data, header }: We.RequestOption): Promise<We.Reque
       },
       timeout: 15000,
       success(res) {
-        const data: We.IAnyObject = res.data as object
+        const data: WXAnyObject = res.data as object
         if (res.statusCode >= 400) {
           let msg = '请求出错'
           switch (res.statusCode) {
