@@ -1,0 +1,64 @@
+<!--pages/register/register.wxml-->
+<view class="page">
+  <view class="register-header shadow-sm">
+    <view class="register-header-title">
+      <text>eBook ID</text>
+    </view>
+    <view class="register-header-desc">
+      <view> 只需一个<text class="strong mr-0">eBook ID</text>，即可访问 eBook 的所有内容。 </view>
+      <view class="flex">
+        <text>已有账户？</text>
+        <navigator url="/pages/login/login" open-type="redirect">
+          在此登录
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="register-form shadow-sm">
+    <van-cell-group>
+      <van-field
+        model:value="{{name}}"
+        error-message="{{nameErrMessage}}"
+        clearable
+        label="昵称"
+        placeholder="请输入昵称"
+        bind:blur="nameRule"
+        bind:input="nameRule"
+      ></van-field>
+      <van-field
+        model:value="{{email}}"
+        error-message="{{emailErrMessage}}"
+        clearable
+        label="邮箱"
+        placeholder="请输入邮箱"
+        bind:blur="emailRule"
+        bind:input="emailRule"
+      ></van-field>
+      <van-field
+        model:value="{{password}}"
+        error-message="{{pwdErrMessage}}"
+        clearable
+        type="password"
+        label="密码"
+        placeholder="请输入密码"
+        border="{{false}}"
+        bind:blur="pwdRule"
+        bind:input="pwdRule"
+      ></van-field>
+      <van-field
+        model:value="{{passwordConfirm}}"
+        error-message="{{pwdConfirmErrMessage}}"
+        clearable
+        type="password"
+        label="确认密码"
+        placeholder="请再次输入密码"
+        border="{{false}}"
+        bind:blur="pwdConfirmRule"
+        bind:input="pwdConfirmRule"
+      ></van-field>
+    </van-cell-group>
+  </view>
+  <view class="register-button shadow-md" bind:tap="toRegister">
+    <text class="text">注册</text>
+  </view>
+</view>

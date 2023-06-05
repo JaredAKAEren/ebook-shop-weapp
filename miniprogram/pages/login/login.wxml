@@ -12,7 +12,7 @@
       </view>
       <view class="flex">
         <text>没有账户？</text>
-        <navigator url="/pages/register/register">
+        <navigator url="/pages/register/register" open-type="redirect">
           创建你的 eBook ID
         </navigator>
       </view>

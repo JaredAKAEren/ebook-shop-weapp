@@ -78,9 +78,29 @@ page {
   display: flex;
 }
 
+.justify-start {
+  justify-content: start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
 .strong {
   font-weight: bold;
   margin: 0 8rpx;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .page {
