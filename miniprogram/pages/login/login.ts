@@ -1,5 +1,5 @@
 // pages/login/login.ts
-import { postLogin } from '../../apis/accounts'
+import { postLogin, getUserInfo } from '../../apis/accounts'
 import { redirect } from '../../utils/loginRedirect'
 import { notNullRule } from '../../utils/validateRules'
 
@@ -40,7 +40,15 @@ Page({
     try {
       const { data } = await postLogin(loginData)
       wx.setStorageSync('token', data.access_token)
-      redirect()
+      const res = await getUserInfo()
+      wx.setStorageSync('userInfo', res.data)
+      if (res.data.openid === null) {
+        wx.redirectTo({
+          url: '/pages/bind/bind'
+        })
+      } else {
+        redirect()
+      }
     } catch (error) {
       // TODO
     }

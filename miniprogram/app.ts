@@ -6,7 +6,11 @@ App<IAppOption>({
     baseUrl: 'https://api.shop.eduwork.cn/api'
   },
   onLaunch() {
-    // 登录
+    // 微信登录
+    this.weChatLogin()
+  },
+  weChatLogin: function handleOnWeChatLogin() {
+    if (wx.getStorageSync('token')) return
     wx.login({
       success: async weRes => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId

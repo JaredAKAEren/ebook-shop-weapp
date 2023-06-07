@@ -24,5 +24,5 @@ export const postBindingWeChat = (data: BindingWeChatData) => {
 }
 
 export const getUserInfo = () => {
-  return request.get('/admin/user')
+  return request.get('/admin/user') as Promise<WXResult<UserResData>>
 }

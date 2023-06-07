@@ -6,6 +6,7 @@ interface IAppOption {
     baseUrl?: string,
   }
   userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
+  weChatLogin: () => void
 }
 
 type WXPageOption = WechatMiniprogram.Page.CustomOption
@@ -25,6 +26,10 @@ type LoginData = {
 
 type LoginResData = {
   access_token: string
+}
+
+type UserResData = {
+  openid: string
 }
 
 type RegisterData = {

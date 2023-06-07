@@ -12,16 +12,11 @@ Page<UserData, WXPageOption>({
     userInfo: null
   },
   onLoad() {
-
   },
   onReady() {
-
   },
   onShow() {
     this.fetchUser()
-    this.setData({
-      isLogin: wx.getStorageSync('token') ? true : false
-    })
   },
   toLogout: async function handleOnLogout() {
     try {
@@ -40,16 +35,28 @@ Page<UserData, WXPageOption>({
     }
   },
   fetchUser: async function handleOnGetUserInfo() {
-    if (!wx.getStorageSync('token') || this.data.userInfo !== null) return
+    // 每次进入页面都检查登录状态
+    this.setData({
+      isLogin: wx.getStorageSync('token') ? true : false
+    })
+
+    // 保证页面的 userInfo 不为空
+    if (this.data.userInfo === null) {
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo') || null
+      })
+    }
+
+    // 没有 token（未登录）或者本地有 userInfo 就返回
+    if (!wx.getStorageSync('token') || wx.getStorageSync('userInfo')) return
 
     try {
       const res = await getUserInfo()
-      if (res?.statusCode !== 200) return
+      wx.setStorageSync('userInfo', res.data)
       this.setData({
         userInfo: res.data,
         isLogin: true
       })
-      wx.setStorageSync('userInfo', res.data)
     } catch (error) {
       // TODO
     }
