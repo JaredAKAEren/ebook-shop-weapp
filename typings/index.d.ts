@@ -29,7 +29,7 @@ type LoginResData = {
 }
 
 type UserResData = {
-  openid: string
+  openid: string | null
 }
 
 type RegisterData = {

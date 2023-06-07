@@ -42,6 +42,12 @@
   margin: 0 16rpx;
 }
 
+.options-nav-wrapper{
+  overflow: hidden;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+}
+
 .logout-button {
   overflow: hidden;
   margin-top: 30rpx;

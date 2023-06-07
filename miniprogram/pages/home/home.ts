@@ -14,7 +14,12 @@ interface HomeData {
   outerIndex?: number
 }
 
-Page<HomeData, WXPageOption>({
+interface HomeMethods {
+  loadData: () => Promise<void>
+  backTop: () => void
+}
+
+Page<HomeData, HomeMethods>({
   data: {
     slides: [],
     books: [],
