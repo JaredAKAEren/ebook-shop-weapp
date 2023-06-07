@@ -1,7 +1,4 @@
-// import We = WechatMiniprogram
-const base = getApp<IAppOption>().globalData.baseUrl
-
-const http = ({ url, method, data, header }: WXRequestOption): Promise<WXRequestSuccess> => {
+const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<WXAnyObject>> => {
   return new Promise(async (resolve, reject) => {
     // 微信小程序不支持 PATCH 方法，提供 data 添加字段来模拟
     if (method === undefined) {
@@ -13,13 +10,14 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXRequest
     }
 
     wx.showLoading({
+      mask: true,
       title: '加载中...'
     })
 
     await new Promise((res) => setTimeout(res, 400))
 
     wx.request({
-      url: base?.trim() + url.trim(),
+      url: (getApp<IAppOption>()?.globalData?.baseUrl ?? '') + url.trim(),
       method: method,
       data: data,
       header: {
@@ -27,7 +25,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXRequest
         Authorization: 'Bearer ' + (wx.getStorageSync('token') || '')
       },
       timeout: 15000,
-      success(res) {
+      success(res:WXResult<WXAnyObject>) {
         const data: WXAnyObject = res.data as object
         if (res.statusCode >= 400) {
           let msg = '请求出错'
@@ -82,6 +80,8 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXRequest
         wx.hideLoading()
       }
     })
+
+    wx.hideLoading()
   })
 }
 

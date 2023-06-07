@@ -12,7 +12,7 @@ Page<UserData, WXPageOption>({
     userInfo: null
   },
   onLoad() {
-    this.fetchUser()
+
   },
   onReady() {
 
@@ -29,6 +29,7 @@ Page<UserData, WXPageOption>({
       if (res.statusCode === 204) {
         wx.removeStorageSync('token')
         wx.removeStorageSync('redirectUrl')
+        wx.removeStorageSync('userInfo')
         this.setData({
           isLogin: false,
           userInfo: null
@@ -45,8 +46,10 @@ Page<UserData, WXPageOption>({
       const res = await getUserInfo()
       if (res?.statusCode !== 200) return
       this.setData({
-        userInfo: res.data
+        userInfo: res.data,
+        isLogin: true
       })
+      wx.setStorageSync('userInfo', res.data)
     } catch (error) {
       // TODO
     }

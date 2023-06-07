@@ -6,16 +6,18 @@
     </swiper-item>
   </swiper>
   <view class="books-wrapper">
-    <grid-view>
-      <view class="book-card book-card-{{(index+1)%2}} shadow-sm" wx:for="{{books}}" wx:key="index">
-        <image class="book-image" src="{{item.cover_url}}" mode="widthFix"></image>
-        <view class="book-title">{{item.title}}</view>
-        <view class="book-info">
-          <text class="book-price">￥{{item.price}}</text>
-          <text class="book-sales">{{item.sales}}人购买</text>
+    <van-grid column-num="2" gutter=".5rem">
+      <van-grid-item content-class="book-content shadow-sm" use-slot wx:for="{{books}}" wx:key="index">
+        <view class="book-card">
+          <image class="book-image" src="{{item.cover_url}}" mode="heightFix"></image>
+          <view class="book-title">{{item.title}}</view>
+          <view class="book-info">
+            <text class="book-price">￥{{item.price}}</text>
+            <text class="book-sales">{{item.sales}}人购买</text>
+          </view>
         </view>
-      </view>
-    </grid-view>
+      </van-grid-item>
+    </van-grid>
   </view>
   <view wx:if="{{loading}}" class="loading">
     <van-loading type="spinner" size="1rem">加载中...</van-loading>

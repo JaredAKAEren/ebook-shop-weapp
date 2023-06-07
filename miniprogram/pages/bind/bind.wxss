@@ -1,0 +1,41 @@
+/* pages/bind/bind.wxss */
+.page {
+  background-color: white;
+}
+
+.container {
+  padding: 80rpx 40rpx;
+}
+
+.bind-button {
+  overflow: hidden;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  color: white;
+  text-align: center;
+  padding: 20rpx 0;
+  letter-spacing: 0.1em;
+  background-color: var(--green-500);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.bind-button:active {
+  background-color: var(--green-600);
+}
+
+.skip-bind-button {
+  overflow: hidden;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  color: var(--gray-400);
+  text-align: center;
+  font-size: .875rem;
+  padding: 20rpx 0;
+  letter-spacing: 0.1em;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.skip-bind-button:active {
+  background-color: var(--gray-100);
+}

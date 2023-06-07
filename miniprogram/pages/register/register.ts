@@ -4,10 +4,10 @@ import { nameRule, emailRule, passwordRule, identicalRule } from '../../utils/va
 
 Page({
   data: {
-    name: 'makima',
-    email: 'makima@hk.com',
-    password: 'Makima111',
-    passwordConfirm: 'Makima111',
+    name: 'denji',
+    email: 'denji@hk.com',
+    password: 'Denji111',
+    passwordConfirm: 'Denji111',
     nameErrMessage: '',
     emailErrMessage: '',
     pwdErrMessage: '',
@@ -71,6 +71,7 @@ Page({
       if (res.statusCode === 201) {
         wx.showToast({
           title: '注册成功',
+          mask: true,
           duration: 1000
         })
         await new Promise((res) => setTimeout(res, 1000))

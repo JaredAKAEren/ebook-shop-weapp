@@ -61,24 +61,25 @@ Page<HomeData, WXPageOption>({
     })
 
     try {
-      const { data }: WXAnyObject = await getHomeData({ page: this.data.currentPage + 1 })
+      const { data } = await getHomeData({ page: this.data.currentPage + 1 })
       // 轮播图只加载一次
       if (this.data.currentPage == 0) {
         this.setData({
-          slides: data.slides ?? []
+          slides: data.slides
         })
       }
 
       // goods 不为空加载数据，为空显示没有数据了
-      if (data?.goods?.data?.length !== 0) {
+      if (data.goods.data.length !== 0) {
         this.setData({
           slides: data.slides,
-          books: [...this.data.books, ...data.goods.data as []],
-          currentPage: this.data.currentPage += 1,
+          books: [...this.data.books, ...data.goods.data],
+          currentPage: data.goods.current_page,
           loading: false
         })
       } else {
         this.setData({
+          loading: false,
           noData: true
         })
       }
@@ -89,9 +90,11 @@ Page<HomeData, WXPageOption>({
     }
   },
   backTop() {
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 600
-    })
+    setTimeout(() => {
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 600
+      })
+    }, 100)
   }
 })

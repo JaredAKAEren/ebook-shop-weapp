@@ -5,19 +5,13 @@ import { notNullRule } from '../../utils/validateRules'
 
 Page({
   data: {
-    email: 'makima@hk.com',
-    password: 'Makima111',
+    email: 'ErenBindTest@gmail.com',
+    password: 'ErenBindTest111',
     emailErrMessage: '',
     pwdErrMessage: ''
   },
-  nullRule: function nullValidate(value: string, key: string, msg: string): boolean {
-    if (value === '') {
-      this.setData({ [key]: msg })
-      return true
-    }
-
-    this.setData({ [key]: '' })
-    return false
+  onUnload() {
+    wx.removeStorageSync('redirectUrl')
   },
   emailRule: function emailValidate(): boolean {
     return notNullRule({
@@ -38,13 +32,13 @@ Page({
   toLogin: async function handleOnLogin() {
     if (!this.emailRule() || !this.pwdRule()) return
 
-    const loginData = {
+    const loginData: LoginData = {
       email: this.data.email,
       password: this.data.password
     }
 
     try {
-      const { data }: WXAnyObject = await postLogin(loginData)
+      const { data } = await postLogin(loginData)
       wx.setStorageSync('token', data.access_token)
       redirect()
     } catch (error) {

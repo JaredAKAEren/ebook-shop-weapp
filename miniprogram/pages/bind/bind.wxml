@@ -1,0 +1,12 @@
+<!--pages/bind/bind.wxml-->
+<view class="page">
+  <view class="container">
+    <van-empty description="绑定微信"></van-empty>
+    <view class="bind-button shadow-md" bind:tap="toBind">
+      <text class="text">立即绑定</text>
+    </view>
+    <view class="skip-bind-button" bind:tap="toSkip">
+      <text class="text">暂时跳过，以后再说</text>
+    </view>
+  </view>
+</view>
