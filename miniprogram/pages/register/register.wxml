@@ -61,4 +61,5 @@
   <view class="register-button shadow-md" bind:tap="toRegister">
     <text class="text">注册</text>
   </view>
+  <van-notify id="van-notify"></van-notify>
 </view>

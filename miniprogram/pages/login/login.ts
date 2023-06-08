@@ -5,7 +5,7 @@ import { notNullRule } from '../../utils/validateRules'
 
 Page({
   data: {
-    email: 'ErenBindTest@gmail.com',
+    email: 'createyourown@gmail.com',
     password: 'ErenBindTest111',
     emailErrMessage: '',
     pwdErrMessage: ''

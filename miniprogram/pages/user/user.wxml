@@ -37,4 +37,5 @@
   </view>
   <view wx:if="{{isLogin}}" class="logout-button shadow" bind:tap="toLogout">登出</view>
   <van-dialog id="van-dialog" confirm-button-color="#1989fa"></van-dialog>
+  <van-notify id="van-notify"></van-notify>
 </view>

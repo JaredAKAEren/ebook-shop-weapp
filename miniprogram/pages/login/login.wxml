@@ -45,4 +45,5 @@
   <view class="login-button shadow-md" bind:tap="toLogin">
     <text class="text">登录</text>
   </view>
+  <van-notify id="van-notify"></van-notify>
 </view>

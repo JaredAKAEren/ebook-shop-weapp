@@ -27,6 +27,7 @@ Page<UserData, UserMethods>({
     this.fetchUser()
   },
   showDialog: function handleShowBindingChangeDialog() {
+    if (!this.data.isLogin) return
     Dialog.confirm({
       title: `${this.data.userInfo?.openid === null ? '绑定' : '解绑'}微信`,
       message: `确定要${this.data.userInfo?.openid === null ? '绑定' : '解绑'}当前微信吗？`,
@@ -66,7 +67,8 @@ Page<UserData, UserMethods>({
         duration: 1000
       })
     } catch (error) {
-      // TODO
+      wx.removeStorageSync('userInfo')
+      this.fetchUser()
     }
   },
   toLogout: async function handleOnLogout() {

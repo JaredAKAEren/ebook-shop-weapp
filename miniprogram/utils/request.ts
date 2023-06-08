@@ -1,3 +1,5 @@
+import Notify from '../miniprogram_npm/@vant/weapp/notify/notify'
+
 const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<WXAnyObject>> => {
   return new Promise(async (resolve, reject) => {
     // 微信小程序不支持 PATCH 方法，提供 data 添加字段来模拟
@@ -25,7 +27,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
         Authorization: 'Bearer ' + (wx.getStorageSync('token') || '')
       },
       timeout: 15000,
-      success(res:WXResult<WXAnyObject>) {
+      async success(res: WXResult<WXAnyObject>) {
         const data: WXAnyObject = res.data as object
         if (res.statusCode >= 400) {
           let msg = '请求出错'
@@ -56,12 +58,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
               break
           }
 
-          wx.showToast({
-            title: msg,
-            icon: 'none',
-            duration: 3000
-          })
-
+          Notify({ type: 'danger', message: msg })
           reject(res)
         }
 
@@ -80,8 +77,6 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
         wx.hideLoading()
       }
     })
-
-    wx.hideLoading()
   })
 }
 
