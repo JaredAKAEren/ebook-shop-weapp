@@ -45,7 +45,6 @@
   letter-spacing: 0.1em;
   background-image: var(--bg-blue-gradient);
 }
-
 .register-button > .text {
   position: relative;
   z-index: 1;
@@ -65,4 +64,20 @@
 
 .register-button:active::before {
   opacity: 1;
+}
+
+.wechat-register-button {
+  position: relative;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  color: white;
+  text-align: center;
+  padding: 20rpx 0;
+  letter-spacing: 0.1em;
+  background-color: var(--green-500);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.wechat-register-button:active {
+  background-color: var(--green-600);
 }

@@ -37,6 +37,7 @@ type RegisterData = {
   email: string
   password: string
   password_confirmation: string
+  openid?: string
 }
 
 /**

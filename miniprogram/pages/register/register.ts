@@ -54,7 +54,11 @@ Page({
       msg: '两次输入密码不一致'
     })
   },
-  toRegister: async function handleOnRegister() {
+  wxRegister: function handleToBindingOpenIdAndRegister() {
+    const openid = wx.getStorageSync('openid')
+    this.toRegister(openid)
+  },
+  toRegister: async function handleOnRegister(openid?: string) {
     if (!this.nameRule() || !this.emailRule() || !this.pwdRule() || !this.pwdConfirmRule()) return
 
     console.log('全部校验通过')
@@ -65,6 +69,8 @@ Page({
       password: this.data.password,
       password_confirmation: this.data.passwordConfirm
     }
+
+    !openid || (registerData.openid = openid)
 
     try {
       const res = await postRegister(registerData)
