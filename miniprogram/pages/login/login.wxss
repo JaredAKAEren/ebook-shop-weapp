@@ -46,7 +46,7 @@
   background-image: var(--bg-blue-gradient);
 }
 
-.login-button > .text {
+.login-button>.text {
   position: relative;
   z-index: 1;
 }

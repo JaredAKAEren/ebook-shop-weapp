@@ -45,7 +45,8 @@
   letter-spacing: 0.1em;
   background-image: var(--bg-blue-gradient);
 }
-.register-button > .text {
+
+.register-button>.text {
   position: relative;
   z-index: 1;
 }

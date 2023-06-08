@@ -38,11 +38,11 @@
   padding: 64rpx 0;
 }
 
-.logout-content > .separate {
+.logout-content>.separate {
   margin: 0 16rpx;
 }
 
-.options-nav-wrapper{
+.options-nav-wrapper {
   overflow: hidden;
   margin-top: 30rpx;
   border-radius: 10rpx;

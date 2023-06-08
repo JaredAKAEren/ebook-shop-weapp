@@ -15,7 +15,7 @@
   justify-content: space-between;
 }
 
-.book-content{
+.book-content {
   border-radius: 15rpx;
   border: none;
 }
@@ -40,7 +40,7 @@
   align-items: center;
 }
 
-.book-info > text {
+.book-info>text {
   margin: 0 20rpx;
   font-size: 0.875rem;
 }
@@ -50,7 +50,7 @@
   font-weight: 600;
 }
 
-.book-info > .book-sales {
+.book-info>.book-sales {
   font-size: 0.75rem;
   color: var(--gray-400);
 }
