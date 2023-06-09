@@ -3,10 +3,12 @@
 interface IAppOption {
   globalData: {
     userInfo?: WechatMiniprogram.UserInfo,
-    baseUrl?: string,
+    baseUrl: string,
+    cartBooksAmount: number
   }
   userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
   weChatLogin: () => void
+  setCartAmount: () => void
 }
 
 type WXPageOption = WechatMiniprogram.Page.CustomOption
@@ -80,4 +82,38 @@ type HomeResData = {
     data: []
   }
   slides: []
+}
+
+type CommentResData = {
+  content: string
+  star: number
+  user: {
+    avatar_url: string
+    name: string
+  }
+}
+
+type BookResData = {
+  goods: {
+    id: number
+    comments: CommentResData[]
+    cover_url: string
+    description: string
+    details: string
+    is_collect: number
+    price: number
+    sales: number
+    stock: number
+    title: string
+  }
+  like_goods: []
+}
+
+type CartAddData = {
+  goods_id: string
+  num?: string
+}
+
+type CartListResData = {
+  data: []
 }

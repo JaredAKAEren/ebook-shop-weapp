@@ -74,6 +74,14 @@ page {
   display: flex;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.items-center{
+  align-items: center;
+}
+
 .justify-start {
   justify-content: start;
 }
@@ -84,6 +92,10 @@ page {
 
 .justify-end {
   justify-content: end;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .strong {

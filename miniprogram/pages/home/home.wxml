@@ -7,22 +7,29 @@
   </swiper>
   <view class="books-wrapper">
     <van-grid column-num="2" gutter=".5rem">
-      <van-grid-item content-class="book-content shadow-sm" use-slot wx:for="{{books}}" wx:key="index">
-        <view class="book-card">
-          <image class="book-image" src="{{item.cover_url}}" mode="heightFix"></image>
-          <view class="book-title">{{item.title}}</view>
-          <view class="book-info">
-            <text class="book-price">￥{{item.price}}</text>
-            <text class="book-sales">{{item.sales}}人购买</text>
+      <van-grid-item
+        content-class="book-content shadow-sm"
+        use-slot
+        wx:for="{{books}}"
+        wx:key="index"
+      >
+        <navigator url="/pages/book/book?id={{item.id}}" hover-class="none">
+          <view class="book-card">
+            <image class="book-image" src="{{item.cover_url}}" mode="heightFix"></image>
+            <view class="book-title">{{item.title}}</view>
+            <view class="book-info">
+              <text class="book-price">￥{{item.price}}</text>
+              <text class="book-sales">{{item.sales}}人购买</text>
+            </view>
           </view>
-        </view>
+        </navigator>
       </van-grid-item>
     </van-grid>
   </view>
-  <view wx:if="{{loading}}" class="loading">
+  <view wx:if="{{!noData}}" class="loading">
     <van-loading type="spinner" size="1rem">加载中...</van-loading>
   </view>
-  <view wx:if="{{noData}}" class="no-data">
+  <view wx:else class="no-data">
     <van-divider contentPosition="center">没有更多了</van-divider>
   </view>
   <view wx:if="{{showBackTop}}" class="back-top shadow-lg" bind:tap="backTop">

@@ -1,0 +1,81 @@
+<!--pages/book/book.wxml-->
+<view class="page">
+  <view class="main-wrapper">
+    <view>
+      <image class="book-cover" src="{{bookData.cover_url}}" mode="widthFix"></image>
+      <van-card
+        price="{{bookData.price}}.00"
+        desc="{{bookData.description || ''}}"
+        title="{{bookData.title || ''}}"
+        title-class="book-title"
+      >
+        <view class="book-sales" slot="num">
+          <text>销量：{{bookData.sales}}</text>
+        </view>
+      </van-card>
+    </view>
+    <view>
+      <van-tabs active="{{active}}" color="#3b82f6" sticky>
+        <van-tab class="book-detail" title="详情" custom-class="tab-wrapper">
+          <rich-text nodes="{{bookData.details}}"></rich-text>
+        </van-tab>
+        <van-tab title="评论" custom-class="tab-wrapper">
+          <block wx:for="{{bookData.comments}}" wx:key="index">
+            <view class="flex comment-card shadow-sm">
+              <image class="user-avatar" src="{{item.user.avatar_url}}" mode="widthFix"></image>
+              <view class="flex-1 comment-main">
+                <view class="flex justify-between items-center">
+                  <text class="user-name">{{item.user.name}}</text>
+                  <van-rate value="{{item.star}}" size="{{12}}" color="#ffd21e"></van-rate>
+                </view>
+                <view class="comment-content flex-1">{{item.content}}</view>
+                <view>
+                  <text class="comment-time">{{item.updated_at}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <van-empty description="{{bookData.comments.length===0?'还没有评论':'没有更多评论了'}}" />
+        </van-tab>
+        <van-tab title="推荐" custom-class="tab-wrapper">
+          <block wx:for="{{recommendBooks}}" wx:key="index">
+            <van-card
+              price="{{item.price}}.00"
+              title="{{item.title}}"
+              thumb="{{item.cover_url}}"
+              thumb-link="/pages/book/book?id={{item.id}}"
+              custom-class="recommend-book shadow-sm"
+            ></van-card>
+          </block>
+        </van-tab>
+      </van-tabs>
+    </view>
+  </view>
+  <van-goods-action>
+    <van-goods-action-icon
+      icon="home-o"
+      text="首页"
+      url="/pages/home/home"
+      link-type="switchTab"
+    ></van-goods-action-icon>
+    <van-goods-action-icon
+      icon="cart-o"
+      text="购物车"
+      info="{{cartBooksAmount}}"
+      url="/pages/cart/cart"
+      link-type="switchTab"
+    ></van-goods-action-icon>
+    <van-goods-action-icon
+      icon="{{bookData.is_collect?'star':'star-o'}}"
+      color="{{bookData.is_collect?'#ffd21e':''}}"
+      text="收藏"
+      bind:click="collect"
+    ></van-goods-action-icon>
+    <van-goods-action-button
+      text="加入购物车"
+      type="warning"
+      bind:click="addCart"
+    ></van-goods-action-button>
+    <van-goods-action-button text="立即购买"></van-goods-action-button>
+  </van-goods-action>
+</view>

@@ -1,13 +1,22 @@
 // app.ts
 import { postWeChatLogin } from './apis/accounts'
+import { getCartList } from './apis/carts'
 
 App<IAppOption>({
   globalData: {
+    cartBooksAmount: 0,
     baseUrl: 'https://api.shop.eduwork.cn/api'
   },
   onLaunch() {
     // 微信登录
     this.weChatLogin()
+    this.setCartAmount()
+  },
+  setCartAmount: async function handleFecthCartListLength() {
+    const res = await getCartList()
+    if (res.statusCode === 200) {
+      this.globalData.cartBooksAmount = res.data.data.length
+    }
   },
   weChatLogin: function handleOnWeChatLogin() {
     if (wx.getStorageSync('token')) return

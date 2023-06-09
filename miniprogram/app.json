@@ -6,7 +6,8 @@
     "pages/user/user",
     "pages/login/login",
     "pages/register/register",
-    "pages/bind/bind"
+    "pages/bind/bind",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",

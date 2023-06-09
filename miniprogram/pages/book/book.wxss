@@ -1,0 +1,73 @@
+/* pages/book/book.wxss */
+.page {
+  background-color: white;
+}
+
+.main-wrapper {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 100rpx);
+}
+
+.book-cover {
+  width: 100%;
+}
+
+.book-title {
+  font-size: 1rem;
+  margin-bottom: 10rpx;
+}
+
+.book-sales {
+  float: right;
+}
+
+.book-detail [alt] {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tab-wrapper {
+  background-color: var(--gray-50);
+  min-height: calc(100vh - 188rpx);
+}
+
+.comment-card {
+  background-color: white;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  padding: 15rpx 20rpx;
+}
+
+.comment-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-avatar {
+  box-sizing: border-box;
+  width: 15%;
+  margin: 30rpx 30rpx 30rpx 10rpx;
+}
+
+.user-name {
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.comment-content {
+  margin: 10rpx 0;
+  font-size: .875rem;
+  color: var(--gray-500);
+  text-align: justify;
+}
+
+.comment-time {
+  font-size: .75rem;
+  color: var(--gray-400);
+}
+
+.recommend-book {
+  background-color: white !important;
+  margin: 20rpx;
+  border-radius: 10rpx;
+}
