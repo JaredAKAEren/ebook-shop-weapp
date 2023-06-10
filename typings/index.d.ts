@@ -21,6 +21,10 @@ interface WXResult<T extends string | WechatMiniprogram.IAnyObject | ArrayBuffer
   data: T
 }
 
+interface VantEvent<T> extends WechatMiniprogram.BaseEvent {
+  detail: T
+}
+
 type LoginData = {
   email: string
   password: string
@@ -115,5 +119,20 @@ type CartAddData = {
 }
 
 type CartListResData = {
-  data: []
+  data: {
+    goods: {
+      price: number
+    }
+    id: number
+    num: number
+    is_checked: number
+  }[]
+}
+
+type CartCheckedListData = {
+  cart_ids: string[]
+}
+
+type CartAmountUpdateData = {
+  num: string
 }

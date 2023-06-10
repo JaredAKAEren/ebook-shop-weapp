@@ -111,6 +111,10 @@ page {
   width: 100%;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .page {
   background-color: var(--gray-100);
   min-height: 100vh;

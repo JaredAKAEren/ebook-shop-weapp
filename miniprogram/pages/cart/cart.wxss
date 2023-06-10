@@ -1,1 +1,60 @@
 /* pages/cart/cart.wxss */
+.main-wrapper {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 20rpx;
+  padding-bottom: 100rpx;
+}
+
+.cart-book-wrapper {
+  overflow: hidden;
+  background-color: white;
+  margin-bottom: 20rpx;
+  border-radius: 15rpx;
+}
+
+.cart-book-content {
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  padding: 20rpx 30rpx;
+}
+
+.book-checkbox{
+  display: block !important;
+}
+
+.cart-book-cover {
+  width: 25%;
+}
+
+.cart-book-content-left {
+  flex: 1;
+}
+
+.cart-book-content-left,
+.cart-book-content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: .875rem;
+}
+
+.cart-book-content-right{
+  align-items: flex-end;
+}
+
+.cart-book-price {
+  font-weight: 700;
+  color: var(--red-500);
+}
+
+.del-button {
+  height: 100%;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red-500);
+  color: white;
+}

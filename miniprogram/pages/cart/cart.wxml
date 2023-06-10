@@ -1,2 +1,49 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="page">
+  <view class="main-wrapper">
+    <van-empty wx:if="{{cartsList.length===0}}" description="购物车空空如也"></van-empty>
+    <van-checkbox-group value="{{checkedList}}">
+      <view class="cart-book-wrapper shadow-sm" wx:for="{{cartsList}}" wx:key="id">
+        <van-swipe-cell right-width="{{ 60 }}" bind:click="deleteDialog" data-id="{{item.id}}">
+          <view class="flex cart-book-content">
+            <van-checkbox
+              class="flex items-center"
+              custom-class="book-checkbox"
+              name="{{item.id}}"
+              data-id="{{item.id}}"
+              bind:tap="check"
+            ></van-checkbox>
+            <image class="cart-book-cover" src="{{item.goods.cover_url}}" mode="widthFix"></image>
+            <view class="cart-book-content-left">
+              <text>{{item.goods.title}}</text>
+              <text class="cart-book-price">￥{{item.goods.price}}</text>
+            </view>
+            <view class="cart-book-content-right">
+              <text class="cart-book-price">￥{{item.goods.price*item.num}} </text>
+              <van-stepper
+                value="{{item.num}}"
+                data-id="{{item.id}}"
+                data-num="{{item.num}}"
+                button-size="1.5rem"
+                bind:change="updateNum"
+              ></van-stepper>
+            </view>
+          </view>
+          <view class="del-button" slot="right">
+            <text>删除</text>
+          </view>
+        </van-swipe-cell>
+      </view>
+    </van-checkbox-group>
+  </view>
+  <van-submit-bar
+    price="{{totalPrice}}"
+    button-text="提交订单"
+    bind:submit="order"
+    safe-area-inset-bottom="{{false}}"
+  >
+    <van-checkbox value="{{allChecked}}" bind:change="allChecked">全选</van-checkbox>
+  </van-submit-bar>
+  <van-dialog id="van-dialog" confirm-button-color="#1989fa"></van-dialog>
+  <van-notify id="van-notify"></van-notify>
+</view>

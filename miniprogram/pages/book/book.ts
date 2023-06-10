@@ -43,7 +43,9 @@ Page<BookData, BookMethods>({
       this.setData({
         cartBooksAmount: ++this.data.cartBooksAmount
       })
-    } else if (res.statusCode === 201 || res.statusCode === 204) {
+    }
+
+    if (res.statusCode === 201 || res.statusCode === 204) {
       wx.showToast({
         title: '已加入购物车',
         mask: true,
