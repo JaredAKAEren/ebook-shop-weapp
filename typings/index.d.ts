@@ -8,7 +8,7 @@ interface IAppOption {
   }
   userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback,
   weChatLogin: () => void
-  setCartAmount: () => void
+  setCartAmount: () => Promise<void>
 }
 
 type WXPageOption = WechatMiniprogram.Page.CustomOption

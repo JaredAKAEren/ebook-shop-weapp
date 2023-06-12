@@ -4,7 +4,7 @@ import { getCartList } from './apis/carts'
 
 App<IAppOption>({
   globalData: {
-    cartBooksAmount: 0,
+    cartBooksAmount: -1,
     baseUrl: 'https://api.shop.eduwork.cn/api'
   },
   onLaunch() {

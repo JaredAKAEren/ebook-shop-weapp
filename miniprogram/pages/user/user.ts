@@ -14,6 +14,8 @@ interface UserMethods {
   fetchUser: () => Promise<void>
 }
 
+const AppData = getApp<IAppOption>()?.globalData
+
 Page<UserData, UserMethods>({
   data: {
     isLogin: false,
@@ -78,6 +80,7 @@ Page<UserData, UserMethods>({
         wx.removeStorageSync('token')
         wx.removeStorageSync('redirectUrl')
         wx.removeStorageSync('userInfo')
+        AppData.cartBooksAmount = -1
         this.setData({
           isLogin: false,
           userInfo: null

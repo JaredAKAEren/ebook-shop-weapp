@@ -92,5 +92,13 @@ Page<BookData, BookMethods>({
     wx.setNavigationBarTitle({
       title: this.data?.bookData?.title || '图书详情'
     })
+    if (this.data.cartBooksAmount === -1) {
+      const setCartAmount = getApp<IAppOption>()?.setCartAmount
+      setCartAmount().then(() => {
+        this.setData({
+          cartBooksAmount: AppData.cartBooksAmount
+        })
+      })
+    }
   }
 })
