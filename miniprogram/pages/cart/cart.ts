@@ -29,6 +29,8 @@ interface CartMethods {
   order: (id: string) => void
 }
 
+const AppData = getApp<IAppOption>().globalData
+
 Page<CartData, CartMethods>({
   data: {
     cartsList: [],
@@ -177,6 +179,7 @@ Page<CartData, CartMethods>({
         checkedList: this.data.checkedList.filter((item) => item !== `${id}`)
       })
 
+      AppData.cartBooksAmount -= 1
       this.changeAllChecked()
       this.calcTotalPrice()
     } catch (error) {
