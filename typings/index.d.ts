@@ -118,15 +118,17 @@ type CartAddData = {
   num?: string
 }
 
+type CartItem = {
+  goods: {
+    price: number
+  }
+  id: number
+  num: number
+  is_checked: number
+}
+
 type CartListResData = {
-  data: {
-    goods: {
-      price: number
-    }
-    id: number
-    num: number
-    is_checked: number
-  }[]
+  data: CartItem[]
 }
 
 type CartCheckedListData = {
@@ -135,4 +137,13 @@ type CartCheckedListData = {
 
 type CartAmountUpdateData = {
   num: string
+}
+
+type Address = {
+  is_default: 1 | 0
+}
+
+type OrderPreviewResData = {
+  address: Address[]
+  carts: []
 }

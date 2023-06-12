@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import './miniprogram_npm/@vant/weapp/common/index.wxss';
+
 page {
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -78,7 +80,7 @@ page {
   flex: 1 1 0%;
 }
 
-.items-center{
+.items-center {
   align-items: center;
 }
 

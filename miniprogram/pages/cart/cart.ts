@@ -64,7 +64,11 @@ Page<CartData, CartMethods>({
     this.calcTotalPrice()
   },
   changeAllChecked: function handleChangeAllCheckedStatus() {
-    if (this.data.cartsList.length === this.data.checkedList.length) {
+    if (
+      this.data.cartsList.length === this.data.checkedList.length
+      && this.data.cartsList.length !== 0
+      && this.data.checkedList.length !== 0
+    ) {
       this.setData({
         allChecked: true
       })
@@ -187,6 +191,16 @@ Page<CartData, CartMethods>({
     }
   },
   order: function handleSubmitOrder() {
+    if (this.data.checkedList.length === 0) {
+      wx.showToast({
+        title: '请选中任意商品',
+        icon: 'error',
+        mask: true,
+        duration: 1000
+      })
+      return
+    }
 
+    wx.navigateTo({ url: '/pages/orderPreview/orderPreview' })
   }
 })

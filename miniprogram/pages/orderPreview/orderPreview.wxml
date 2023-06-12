@@ -1,0 +1,36 @@
+<!--pages/orderPreview/orderPreview.wxml-->
+<view class="page">
+  <view class="address-card shadow-sm">
+    <view class="address-card-content">
+      <view wx:if="{{address===null}}" class="address-card-nocontent">
+        还没有地址，点击右侧添加地址
+      </view>
+      <view wx:else class="address-card-text">
+        <view class="address-card-text-title van-ellipsis">{{address.name}} {{address.phone}}</view>
+        <view class="address-card-text-detail van-multi-ellipsis--l2">
+          {{address.province}} {{address.city}} {{address.county}} {{address.address}}
+        </view>
+      </view>
+    </view>
+    <navigator class="address-card-icon" url="/pages/addressDetail/addressDetail">
+      <van-icon name="arrow" custom-class="address-card-icon-text"></van-icon>
+    </navigator>
+  </view>
+  <view class="cart-list">
+    <view class="cart-book-wrapper shadow-sm" wx:for="{{carts}}" wx:key="id">
+      <view class="flex cart-book-content">
+        <image class="cart-book-cover" src="{{item.goods.cover_url}}" mode="widthFix"></image>
+        <view class="cart-book-content-left">
+          <text>{{item.goods.title}}</text>
+          <text class="cart-book-price">￥{{item.goods.price}}</text>
+        </view>
+        <view class="cart-book-content-right">
+          <text class="cart-book-num">x{{item.num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-submit-bar price="{{totalPrice}}" button-text="去支付" bind:submit="payment">
+    <text>共计<text class="strong">{{carts.length}}</text>件商品</text>
+  </van-submit-bar>
+</view>

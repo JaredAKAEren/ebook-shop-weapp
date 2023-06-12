@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单预览",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
+  }
+}

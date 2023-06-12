@@ -7,7 +7,8 @@
     "pages/login/login",
     "pages/register/register",
     "pages/bind/bind",
-    "pages/book/book"
+    "pages/book/book",
+    "pages/orderPreview/orderPreview"
   ],
   "window": {
     "backgroundTextStyle": "light",
