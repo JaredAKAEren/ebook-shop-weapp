@@ -157,7 +157,6 @@ Page<CartData, CartMethods>({
     }
   },
   deleteDialog: function handleShowDeleteDialog(event) {
-    // console.log(event)
     if (event.detail !== 'right') return
     Dialog.confirm({
       title: '删除',

@@ -5,3 +5,7 @@ export const decodeSecret = (secret: string, key: number[]) => {
   })
   return result.join('')
 }
+
+export const extractAreaCode = (areaWithCode: string): string[] => {
+  return areaWithCode.split('-')
+}

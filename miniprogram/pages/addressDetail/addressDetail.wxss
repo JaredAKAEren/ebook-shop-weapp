@@ -1,0 +1,40 @@
+/* pages/addressDetail/addressDetail.wxss */
+.area-form {
+  padding: 30rpx;
+}
+
+.area-form-main {
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+
+.checked-cell {
+  display: flex;
+  align-items: center;
+}
+
+.checked-warpper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checked {
+  display: block !important;
+}
+
+.save-button {
+  overflow: hidden;
+  margin: 0 30rpx;
+  margin-top: 90rpx;
+  border-radius: 10rpx;
+  color: white;
+  text-align: center;
+  padding: 20rpx 0;
+  letter-spacing: 0.1em;
+  background-color: var(--blue-500);
+  transition: background-color .2s ease-in-out;
+}
+
+.save-button:active {
+  background-color: var(--blue-600);
+}

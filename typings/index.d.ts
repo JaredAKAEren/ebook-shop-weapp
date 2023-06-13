@@ -140,10 +140,21 @@ type CartAmountUpdateData = {
 }
 
 type Address = {
+  county: string
   is_default: 1 | 0
 }
 
 type OrderPreviewResData = {
   address: Address[]
   carts: []
+}
+
+type AddressAddData = {
+  name: string
+  address: string
+  phone: string
+  province: string
+  city: string
+  county: string
+  is_default: 1 | 0
 }

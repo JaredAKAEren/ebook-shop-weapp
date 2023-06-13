@@ -12,9 +12,9 @@
         </view>
       </view>
     </view>
-    <navigator class="address-card-icon" url="/pages/addressDetail/addressDetail">
+    <view class="address-card-icon" bind:tap="addressOptions">
       <van-icon name="arrow" custom-class="address-card-icon-text"></van-icon>
-    </navigator>
+    </view>
   </view>
   <view class="cart-list">
     <view class="cart-book-wrapper shadow-sm" wx:for="{{carts}}" wx:key="id">

@@ -87,7 +87,7 @@ Page<UserData, UserMethods>({
         })
       }
     } catch (error) {
-      // TODO
+      // EMPTY
     }
   },
   fetchUser: async function handleOnGetUserInfo() {
@@ -114,7 +114,7 @@ Page<UserData, UserMethods>({
         isLogin: true
       })
     } catch (error) {
-      // TODO
+      // EMPTY
     }
   }
 })

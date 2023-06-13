@@ -1,0 +1,67 @@
+<!--pages/addressDetail/addressDetail.wxml-->
+<view class="page">
+  <view class="area-form">
+    <van-cell-group custom-class="area-form-main shadow-sm">
+      <van-field
+        model:value="{{name}}"
+        error-message="{{nameErrMessage}}"
+        label="姓名"
+        placeholder="请输入姓名"
+        bind:blur="nameRule"
+        bind:input="nameRule"
+      ></van-field>
+      <van-field
+        model:value="{{phone}}"
+        error-message="{{phoneErrMessage}}"
+        label="电话"
+        placeholder="请输入电话"
+        bind:blur="phoneRule"
+        bind:input="phoneRule"
+      ></van-field>
+      <van-field
+        model:value="{{areaValue}}"
+        error-message="{{areaValueErrMessage}}"
+        readonly
+        label="地区"
+        placeholder="点击选择地区"
+        bind:tap="openAddressPopover"
+      >
+        <van-icon slot="right-icon" name="arrow" custom-class=""></van-icon>
+      </van-field>
+      <van-field
+        model:value="{{areaDetail}}"
+        error-message="{{areaDetailErrMessage}}"
+        label="详细地址"
+        placeholder="请输入详细地址"
+        bind:blur="areaDetailRule"
+        bind:input="areaDetailRule"
+      ></van-field>
+    </van-cell-group>
+  </view>
+  <van-cell-group custom-class="shadow-sm" inset>
+    <van-cell
+      custom-class="checked-cell"
+      value-class="checked-warpper"
+      title="设为默认收货地址"
+      border="{{false}}"
+    >
+      <van-switch
+        custom-class="checked"
+        active-value="{{1}}"
+        inactive-value="{{0}}"
+        size="48rpx"
+        checked="{{checked}}"
+        bind:change="onChange"
+      />
+    </van-cell>
+  </van-cell-group>
+  <view class="save-button shadow" bind:tap="save">保存</view>
+  <van-popup show="{{showAddressSelect}}" bind:close="closeAddressPopover" position="bottom">
+    <van-area
+      area-list="{{areaList}}"
+      columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"
+      bind:confirm="confirm"
+      bind:cancel="closeAddressPopover"
+    ></van-area>
+  </van-popup>
+</view>

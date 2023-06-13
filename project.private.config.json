@@ -56,6 +56,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/addressDetail/addressDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

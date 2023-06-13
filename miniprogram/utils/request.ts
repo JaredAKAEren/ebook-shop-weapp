@@ -16,7 +16,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
       title: '加载中...'
     })
 
-    await new Promise((res) => setTimeout(res, 400))
+    await new Promise((res) => setTimeout(res, 100))
 
     wx.request({
       url: (getApp<IAppOption>()?.globalData?.baseUrl ?? '') + url.trim(),

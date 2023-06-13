@@ -10,9 +10,9 @@ App<IAppOption>({
   onLaunch() {
     // 微信登录
     this.weChatLogin()
-    this.setCartAmount()
   },
   setCartAmount: async function handleFecthCartListLength() {
+    if (!wx.getStorageSync('token')) return
     const res = await getCartList()
     if (res.statusCode === 200) {
       this.globalData.cartBooksAmount = res.data.data.length
@@ -22,7 +22,6 @@ App<IAppOption>({
     if (wx.getStorageSync('token')) return
     wx.login({
       success: async weRes => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (!weRes.code) return
         const weLoginData: WeLoginData = {
           appid: 'wxe806e1c3078335f3',
@@ -37,6 +36,8 @@ App<IAppOption>({
           wx.setStorageSync('token', res.data.access_token)
           wx.setStorageSync('userInfo', res.data.user)
         }
+
+        this.setCartAmount()
       }
     })
   }

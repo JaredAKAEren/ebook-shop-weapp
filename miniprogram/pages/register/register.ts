@@ -61,8 +61,6 @@ Page({
   toRegister: async function handleOnRegister(openid?: string) {
     if (!this.nameRule() || !this.emailRule() || !this.pwdRule() || !this.pwdConfirmRule()) return
 
-    console.log('全部校验通过')
-
     const registerData: RegisterData = {
       name: this.data.name,
       email: this.data.email,
@@ -86,7 +84,7 @@ Page({
         })
       }
     } catch (error) {
-      // TODO
+      // EMPTY
     }
   }
 })

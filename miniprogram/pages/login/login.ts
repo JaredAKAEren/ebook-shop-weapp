@@ -50,7 +50,7 @@ Page({
         redirect()
       }
     } catch (error) {
-      // TODO
+      // EMPTY
     }
   }
 })

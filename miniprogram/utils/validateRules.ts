@@ -92,7 +92,13 @@ const passwordRule = (args: validateArgs) => {
   return regExpRule(regExp, args)
 }
 
+const phoneRule = (args: validateArgs) => {
+  const regExp = new RegExp(`^(13[0-9]|14[57]|15[012356789]|16[56]|17[0135678]|18[0-9]|19[89])\\d{8}$`)
+  return regExpRule(regExp, args)
+}
+
 export {
+  phoneRule,
   notNullRule,
   nameRule,
   emailRule,
