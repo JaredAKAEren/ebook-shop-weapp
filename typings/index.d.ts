@@ -140,6 +140,7 @@ type CartAmountUpdateData = {
 }
 
 type Address = {
+  id: number
   county: string
   is_default: 1 | 0
 }
@@ -157,4 +158,9 @@ type AddressAddData = {
   city: string
   county: string
   is_default: 1 | 0
+}
+
+type Order = {
+  id: number
+  order_no: string
 }

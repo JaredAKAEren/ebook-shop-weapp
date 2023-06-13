@@ -30,7 +30,16 @@
       </view>
     </view>
   </view>
-  <van-submit-bar price="{{totalPrice}}" button-text="去支付" bind:submit="payment">
+  <van-submit-bar price="{{totalPrice}}" button-text="去支付" bind:submit="openPayment">
     <text>共计<text class="strong">{{carts.length}}</text>件商品</text>
   </van-submit-bar>
+  <van-share-sheet
+    show="{{payShow}}"
+    title="请选择支付方式"
+    options="{{payOptions}}"
+    cancel-text="取消支付"
+    close-on-click-overlay="{{false}}"
+    bind:select="paymentSelect"
+    bind:cancel="cancelPay"
+  ></van-share-sheet>
 </view>

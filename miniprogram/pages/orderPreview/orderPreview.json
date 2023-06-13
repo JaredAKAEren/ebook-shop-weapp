@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "订单预览",
   "usingComponents": {
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index"
   }

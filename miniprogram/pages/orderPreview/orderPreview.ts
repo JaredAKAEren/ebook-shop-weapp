@@ -1,8 +1,11 @@
 // pages/orderPreview/orderPreview.ts
-import { getOrderPreview } from '../../apis/orders'
+import { getOrderPreview, createOrder, updateOrderStatusToPaid } from '../../apis/orders'
 import { extractAreaCode } from '../../utils/utils'
 
 interface PageData {
+  orderInfo: null | Order
+  payShow: boolean
+  payOptions: { name: string, icon: string, type: string }[]
   totalPrice: number
   address: null | Address
   addresses: Address[]
@@ -13,11 +16,16 @@ interface PageMethods {
   orderPreview: () => void
   calcTotalPrice: () => void
   addressOptions: () => void
-  payment: () => void
+  cancelPay: () => void
+  paymentSelect: (event: VantEvent<{ type: string }>) => void
+  openPayment: () => void
 }
 
 Page<PageData, PageMethods>({
   data: {
+    orderInfo: null,
+    payOptions: [{ name: '支付宝', icon: 'qrcode', type: 'aliyun' }],
+    payShow: false,
     totalPrice: 0,
     address: null,
     addresses: [],
@@ -64,7 +72,31 @@ Page<PageData, PageMethods>({
       console.log('选择地址')
     }
   },
-  payment: function handleToGenerateOrder() {
+  cancelPay: function handleToClosePaymentCancel() {
+    this.setData({
+      payShow: false
+    })
+    wx.navigateBack({ delta: 1 })
+  },
+  paymentSelect: async function handlePayment({ detail }) {
+    // console.log(detail.type)
+    if (this.data.orderInfo?.id === undefined) return
+    try {
+      const res = await updateOrderStatusToPaid(this.data.orderInfo.id, detail.type)
+      if (res.statusCode !== 200) return
+      wx.showToast({
+        title: '支付成功',
+        mask: false,
+        duration: 1000
+      })
+      this.setData({
+        payShow: false
+      })
+    } catch (error) {
+      // EMPTY
+    }
+  },
+  openPayment: async function handleToOpenPaymentPanelAndGenerateOrder() {
     if (this.data.address === null) {
       wx.showToast({
         title: '请添加地址',
@@ -74,5 +106,19 @@ Page<PageData, PageMethods>({
       })
       return
     }
+
+    try {
+      const res = await createOrder(this.data.address.id)
+      if (res.statusCode !== 200) return
+      this.setData({
+        orderInfo: res.data
+      })
+    } catch (error) {
+      // EMPTY
+    }
+
+    this.setData({
+      payShow: true
+    })
   }
 })
