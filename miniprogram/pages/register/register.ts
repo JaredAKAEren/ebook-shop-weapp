@@ -4,10 +4,10 @@ import { nameRule, emailRule, passwordRule, identicalRule } from '../../utils/va
 
 Page({
   data: {
-    name: 'denji',
-    email: 'denji@hk.com',
-    password: 'Denji111',
-    passwordConfirm: 'Denji111',
+    name: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
     nameErrMessage: '',
     emailErrMessage: '',
     pwdErrMessage: '',

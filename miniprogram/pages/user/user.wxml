@@ -22,7 +22,7 @@
     <van-cell-group>
       <van-cell icon="user-circle-o" title="个人信息" is-link></van-cell>
       <van-cell icon="location-o" title="收货地址" is-link></van-cell>
-      <van-cell icon="orders-o" title="我的订单" is-link></van-cell>
+      <van-cell icon="orders-o" title="我的订单" url="/pages/orders/orders" is-link></van-cell>
       <van-cell icon="goods-collect-o" title="我的收藏" is-link></van-cell>
       <van-cell icon="closed-eye" title="修改密码" is-link></van-cell>
       <van-cell

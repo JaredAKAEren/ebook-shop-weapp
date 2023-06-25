@@ -1,4 +1,4 @@
-<!-- category.wxml -->
+<!--pages/orders/orders.wxml-->
 <view>
   <van-empty description="分类列表"></van-empty>
 </view>

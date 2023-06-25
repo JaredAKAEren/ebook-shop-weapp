@@ -9,6 +9,7 @@
     "pages/bind/bind",
     "pages/book/book",
     "pages/orderPreview/orderPreview",
+    "pages/orders/orders",
     "pages/addressDetail/addressDetail"
   ],
   "window": {
