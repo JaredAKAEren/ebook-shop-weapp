@@ -2,7 +2,7 @@ import request from '../utils/request'
 import { decodeSecret } from '../utils/utils'
 
 export const postLogin = (data: LoginData) => {
-  return request.post('/auth/login', data) as Promise<WXResult<LoginResData>>
+  return request.post<LoginResData>('/auth/login', data)
 }
 
 export const postLogout = () => {
@@ -16,7 +16,7 @@ export const postRegister = (data: RegisterData) => {
 export const postWeChatLogin = (data: WeLoginData) => {
   const { key, ...relData } = data
   relData.secret = decodeSecret(data.secret, data.key)
-  return request.post('/auth/wx/code', relData) as Promise<WXResult<WeChatLoginResData>>
+  return request.post<WeChatLoginResData>('/auth/wx/code', relData)
 }
 
 export const postBindingWeChat = (data: BindingWeChatData) => {
@@ -24,5 +24,5 @@ export const postBindingWeChat = (data: BindingWeChatData) => {
 }
 
 export const getUserInfo = () => {
-  return request.get('/admin/user') as Promise<WXResult<UserResData>>
+  return request.get<UserResData>('/admin/user')
 }

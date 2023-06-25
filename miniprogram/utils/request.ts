@@ -1,6 +1,8 @@
 import Notify from '../miniprogram_npm/@vant/weapp/notify/notify'
 
-const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<WXAnyObject>> => {
+type WeResData = string | WechatMiniprogram.IAnyObject | ArrayBuffer
+
+const http = <T extends WeResData>({ url, method, data, header }: WXRequestOption): Promise<WXResult<T>> => {
   return new Promise(async (resolve, reject) => {
     // 微信小程序不支持 PATCH 方法，提供 data 添加字段来模拟
     if (method === undefined) {
@@ -18,7 +20,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
 
     await new Promise((res) => setTimeout(res, 100))
 
-    wx.request({
+    wx.request<T>({
       url: (getApp<IAppOption>()?.globalData?.baseUrl ?? '') + url.trim(),
       method: method,
       data: data,
@@ -27,7 +29,7 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
         Authorization: 'Bearer ' + (wx.getStorageSync('token') || '')
       },
       timeout: 15000,
-      async success(res: WXResult<WXAnyObject>) {
+      async success(res) {
         const data: WXAnyObject = res.data as object
         if (res.statusCode >= 400) {
           let msg = '请求出错'
@@ -81,20 +83,20 @@ const http = ({ url, method, data, header }: WXRequestOption): Promise<WXResult<
 }
 
 const request = {
-  get(url: string, data?: {}, header?: {}) {
-    return http({ method: 'GET', url, data, header })
+  get<T extends WeResData>(url: string, data?: {}, header?: {}) {
+    return http<T>({ method: 'GET', url, data, header })
   },
-  post(url: string, data?: {}, header?: {}) {
-    return http({ method: 'POST', url, data, header })
+  post<T extends WeResData>(url: string, data?: {}, header?: {}) {
+    return http<T>({ method: 'POST', url, data, header })
   },
-  put(url: string, data?: {}, header?: {}) {
-    return http({ method: 'PUT', url, data, header })
+  put<T extends WeResData>(url: string, data?: {}, header?: {}) {
+    return http<T>({ method: 'PUT', url, data, header })
   },
-  delete(url: string, data?: {}, header?: {}) {
-    return http({ method: 'DELETE', url, data, header })
+  delete<T extends WeResData>(url: string, data?: {}, header?: {}) {
+    return http<T>({ method: 'DELETE', url, data, header })
   },
-  patch(url: string, data?: {}, header?: {}) {
-    return http({ method: undefined, url, data, header })
+  patch<T extends WeResData>(url: string, data?: {}, header?: {}) {
+    return http<T>({ method: undefined, url, data, header })
   },
   http
 }

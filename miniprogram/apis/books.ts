@@ -1,7 +1,7 @@
 import request from '../utils/request'
 
 export const getBookDetails = (id: string) => {
-  return request.get(`/goods/${id}`) as Promise<WXResult<BookResData>>
+  return request.get<BookResData>(`/goods/${id}`)
 }
 
 export const updateBookCollectStatus = (id: number) => {

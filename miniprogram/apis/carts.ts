@@ -9,7 +9,7 @@ export const getCartList = (include?: string) => {
   if (include !== undefined) {
     url += `?include=${include}`
   }
-  return request.get(url) as Promise<WXResult<CartListResData>>
+  return request.get<CartListResData>(url)
 }
 
 export const updateCartCheckedStatus = (data: CartCheckedListData) => {

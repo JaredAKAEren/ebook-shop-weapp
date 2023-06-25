@@ -1,11 +1,11 @@
 import request from "../utils/request"
 
 export const getOrderPreview = () => {
-  return request.get('/orders/preview') as Promise<WXResult<OrderPreviewResData>>
+  return request.get<OrderPreviewResData>('/orders/preview')
 }
 
 export const createOrder = (id: number) => {
-  return request.post(`/orders?address_id=${id}`) as Promise<WXResult<Order>>
+  return request.post<Order>(`/orders?address_id=${id}`)
 }
 
 export const updateOrderStatusToPaid = (orderId: number, type: string) => {
